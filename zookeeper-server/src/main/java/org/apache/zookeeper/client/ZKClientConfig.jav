@@ -35,6 +35,8 @@ public class ZKClientConfig extends ZKConfig {
     //############################################################################################################################
     //注意这里每个Configuration参数变量都声明为static final。在Java中这代表把他们声明为const。
     //因为这些参数在zookeeper启动后基本不会再改变，所以令其为const是好的做法。
+    //static指定这些参数在ZKClientConfig被创建之前就存在，而且所有ZKClientConfig object共享同一个参数
+    //final指定这些参数作文const不能在被改变
 
     public static final String ZK_SASL_CLIENT_USERNAME = "zookeeper.sasl.client.username";
     public static final String ZK_SASL_CLIENT_USERNAME_DEFAULT = "zookeeper";
