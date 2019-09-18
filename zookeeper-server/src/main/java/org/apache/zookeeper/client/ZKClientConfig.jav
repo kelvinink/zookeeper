@@ -31,6 +31,11 @@ import org.apache.zookeeper.server.quorum.QuorumPeerConfig.ConfigException;
  */
 @InterfaceAudience.Public
 public class ZKClientConfig extends ZKConfig {
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    //注意这里每个Configuration参数变量都声明为static final。在Java中这代表把他们声明为const。
+    //因为这些参数在zookeeper启动后基本不会再改变，所以令其为const是好的做法。
+
     public static final String ZK_SASL_CLIENT_USERNAME = "zookeeper.sasl.client.username";
     public static final String ZK_SASL_CLIENT_USERNAME_DEFAULT = "zookeeper";
     public static final String ZK_SASL_CLIENT_CANONICALIZE_HOSTNAME =
@@ -64,7 +69,16 @@ public class ZKClientConfig extends ZKConfig {
      * Feature is disabled by default.
      */
     public static final long ZOOKEEPER_REQUEST_TIMEOUT_DEFAULT = 0;
+    //####################################################### <<< Kelvin Note ####################################################
 
+
+    //####################################################### Kelvin Note ####################################################
+    //########################################################################################################################
+    //ZKClientConfig是ZKConfig的subclass。这里有三种对ZKClientConfig做initialization的方法分别为：
+    // 1. Default construct
+    // 2. Construct with File
+    // 3. Construct with config path
+    // ZKClientConfig将这三种construct delegate到其super class
     public ZKClientConfig() {
         super();
         initFromJavaSystemProperties();
@@ -77,6 +91,8 @@ public class ZKClientConfig extends ZKConfig {
     public ZKClientConfig(String configPath) throws ConfigException {
         super(configPath);
     }
+
+    //####################################################### <<< Kelvin Note ####################################################
 
     /**
      * Initialize all the ZooKeeper client properties which are configurable as
@@ -133,6 +149,9 @@ public class ZKClientConfig extends ZKConfig {
      * @return return property value as an <code>long</code>, or
      *         <code>defaultValue</code>
      */
+    //####################################################### Kelvin Note ####################################################
+    //########################################################################################################################
+    //Get value的时候能返回一个默认值的机制可以借鉴一下
     public long getLong(String key, long defaultValue) {
         String value = getProperty(key);
         if (value != null) {
@@ -140,4 +159,5 @@ public class ZKClientConfig extends ZKConfig {
         }
         return defaultValue;
     }
+    //####################################################### <<< Kelvin Note ####################################################
 }
