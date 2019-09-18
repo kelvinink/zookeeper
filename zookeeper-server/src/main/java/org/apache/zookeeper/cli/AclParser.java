@@ -33,6 +33,12 @@ public class AclParser {
      * @param aclString
      * @return 
      */
+
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    //常规的ACL parser,没啥特别，就是按照指定格式进行剖析。
+    //包括字符搜索，substring，使用switch分情况讨论等等常规操作
+    //parse， getPermFromString声明为public static是为了不需要创建AclParser object就可以使用这些函数
     public static List<ACL> parse(String aclString) {
         List<ACL> acl;
         String acls[] = aclString.split(",");
@@ -78,4 +84,5 @@ public class AclParser {
         }
         return perm;
     }
+    //####################################################### <<< Kelvin Note ####################################################
 }
