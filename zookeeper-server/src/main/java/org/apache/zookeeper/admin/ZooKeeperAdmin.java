@@ -74,6 +74,11 @@ public class ZooKeeperAdmin extends ZooKeeper {
      * @see ZooKeeper#ZooKeeper(String, int, Watcher)
      *
      */
+
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    //这里一样是一堆的constructor delegation
+    //主要是连接上zookeeper服务器
     public ZooKeeperAdmin(String connectString, int sessionTimeout, Watcher watcher)
         throws IOException {
         super(connectString, sessionTimeout, watcher);
@@ -169,6 +174,14 @@ public class ZooKeeperAdmin extends ZooKeeper {
      * @throws InterruptedException If the server transaction is interrupted.
      * @throws KeeperException If the server signals an error with a non-zero error code.
      */
+
+    //####################################################### <<< Kelvin Note ####################################################
+
+
+
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    //下面的reconfigure函数也是典型的function delegation
     public byte[] reconfigure(String joiningServers, String leavingServers,
                               String newMembers, long fromConfig, Stat stat) throws KeeperException, InterruptedException {
         return internalReconfig(joiningServers, leavingServers, newMembers, fromConfig, stat);
@@ -208,6 +221,8 @@ public class ZooKeeperAdmin extends ZooKeeper {
                             DataCallback cb, Object ctx) {
         internalReconfig(joiningServers, leavingServers, newMembers, fromConfig, cb, ctx);
     }
+
+    //####################################################### <<< Kelvin Note ####################################################
 
     /**
      * String representation of this ZooKeeperAdmin client. Suitable for things
