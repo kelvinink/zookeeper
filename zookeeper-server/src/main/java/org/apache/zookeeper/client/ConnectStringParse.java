@@ -48,6 +48,11 @@ public final class ConnectStringParser {
      * @throws IllegalArgumentException
      *             for an invalid chroot path.
      */
+
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    //常规的剖析connection string的函数，没啥特别，就是用用indexOf, substring, split这些函数分离host, port等部分
+    //所以大项目也是由这些常规的小模块组成的，没有那么神奇
     public ConnectStringParser(String connectString) {
         // parse out chroot, if any
         int off = connectString.indexOf('/');
@@ -79,6 +84,7 @@ public final class ConnectStringParser {
             serverAddresses.add(InetSocketAddress.createUnresolved(host, port));
         }
     }
+    //####################################################### <<< Kelvin Note ####################################################
 
     public String getChrootPath() {
         return chrootPath;
