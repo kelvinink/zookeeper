@@ -52,6 +52,12 @@ public class FourLetterWordMain {
      * @throws java.io.IOException
      * @throws SSLContextException
      */
+
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    //这里对函数send4LetterWord进行了三次overloading，分别有不同的参数列表，其中前两个的工作呗delegate到第三个。
+    //这样我们可以同时向用户提供简单易用的API和功能齐全的API
+    //所有这些函数都被声明为public static，因为在main函数中对他们进行了调用，main函数为static函数
     public static String send4LetterWord(String host, int port, String cmd)
             throws IOException, SSLContextException {
         return send4LetterWord(host, port, cmd, false, DEFAULT_SOCKET_TIMEOUT);
@@ -134,7 +140,10 @@ public class FourLetterWordMain {
             }
         }
     }
+    //####################################################### <<< Kelvin Note ####################################################
     
+
+    //简单的命令参数检查，参数错误时打印命令用法
     public static void main(String[] args)
             throws IOException, SSLContextException
     {
