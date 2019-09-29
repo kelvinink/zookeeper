@@ -32,6 +32,11 @@ import org.slf4j.Logger;
 public class Environment {
     public static final String JAAS_CONF_KEY = "java.security.auth.login.config";
 
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    // 定义class内部的static class Entry，因为一个定义在另一个class内部的class必须为static。我们可以通过name resolution符合获得该class的定义。
+    // Entry的定义很简单，就是 name=value 的格式
+    //####################################################### <<< Kelvin Note  ####################################################
     public static class Entry {
         private String k;
         private String v;
@@ -52,6 +57,10 @@ public class Environment {
         l.add(new Entry(k,v));
     }
 
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    // 构建环境变量列表 name=value 
+    //####################################################### <<< Kelvin Note  ####################################################
     public static List<Entry> list() {
         ArrayList<Entry> l = new ArrayList<Entry>();
         put(l, "zookeeper.version", Version.getFullVersion());
