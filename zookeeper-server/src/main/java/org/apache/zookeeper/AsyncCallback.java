@@ -33,6 +33,13 @@ import org.apache.zookeeper.data.Stat;
 @InterfaceAudience.Public
 public interface AsyncCallback {
 
+    //####################################################### Kelvin Note >>> ####################################################
+    //############################################################################################################################
+    // 定义了所有Asynchronous callback, 主要是在做与IO相关的动作时使用
+    // StatCallback, DataCallback, ACLCallback, ChildrenCallback
+    // StringCallback, VoidCallback, MultiCallback
+    //####################################################### <<< Kelvin Note  ####################################################
+
     /**
      * This callback is used to retrieve the stat of the node.
      */
